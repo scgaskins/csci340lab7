@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using csci340lab7.Data;
 
 namespace csci340lab7
 {
@@ -24,6 +26,9 @@ namespace csci340lab7
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+
+            services.AddDbContext<csci340lab7Context>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("csci340lab7Context")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
